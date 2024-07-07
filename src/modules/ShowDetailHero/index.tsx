@@ -3,12 +3,11 @@ import Image from 'next/image';
 
 import { IMAGE_BASE_URL } from '@/constants/url';
 
-import WatchlistButton from '@/components/WatchlistButton';
+import { convertShowDurationToString } from '@/utils/showDuration';
 
 import type { ShowDetail } from '@/types/show';
 
-import { convertShowDurationToString } from '@/utils/showDuration';
-
+import WatchlistButton from '@/components/WatchlistButton';
 
 import styles from './styles.module.css';
 
@@ -19,7 +18,7 @@ interface ShowDetailHeroProps {
 const ShowDetailHero = ({ showDetail }: ShowDetailHeroProps) => {
   const showDuration = useMemo(() => {
     if (showDetail.runtime) {
-			return convertShowDurationToString(showDetail.runtime);
+      return convertShowDurationToString(showDetail.runtime);
     }
 
     if (showDetail.seasons) {
@@ -28,7 +27,7 @@ const ShowDetailHero = ({ showDetail }: ShowDetailHeroProps) => {
       }`;
     }
 
-		return '';
+    return '';
   }, [showDetail.runtime, showDetail.seasons]);
 
   return (
@@ -44,7 +43,9 @@ const ShowDetailHero = ({ showDetail }: ShowDetailHeroProps) => {
       <div className={styles.content}>
         <h2 className={styles.title}>{showDetail.title || showDetail.name}</h2>
         <div className={styles.information}>
-          {showDetail.release_date?.slice(0, 4) || showDetail.first_air_date?.slice(0, 4)} | {showDuration} |{' '}
+          {showDetail.release_date?.slice(0, 4) ||
+            showDetail.first_air_date?.slice(0, 4)}{' '}
+          | {showDuration} |{' '}
           {showDetail.spoken_languages.length > 1
             ? `${showDetail.spoken_languages.length} Languages`
             : showDetail.spoken_languages[0].english_name}
