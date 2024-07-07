@@ -1,0 +1,31 @@
+.inputWrapper {
+  align-items: center;
+  background-color: var(--light-black);
+  border-radius: 12px;
+  color: var(--light-grey);
+  display: flex;
+  font-size: 24px;
+  gap: 24px;
+  padding: 0 24px;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  color: var(--light-grey);
+  font-size: 24px;
+  outline: none;
+  
+  &::placeholder {
+    color: var(--grey);
+  }
+}
+
+.clearButton {
+  background: transparent;
+  border: none;
+  color: var(--light-grey);
+  cursor: pointer;
+  font-size: 24px;
+  outline: none;
+}

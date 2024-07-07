@@ -1,0 +1,60 @@
+.sidenav {
+  align-items: center;
+	background: linear-gradient(to right, var(--bg-black), rgba(0, 0, 0, 0.8) 96px, rgba(0, 0, 0, 0));
+  display: flex;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  transition: 0.5s width;
+  top: 0;
+  width: 96px;
+
+  &:has(> ul > .menu:hover) {
+    width: 70%;
+    z-index: 10;
+  }
+
+  & > ul {
+    width: 100%;
+
+    &:hover .menuText {
+      opacity: 1;
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
+}
+
+.menu {
+  color: var(--grey);
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    color: var(--white);
+  }
+
+  & > a {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    padding: 16px 36px;
+  }
+}
+
+.menuIcon {
+  font-size: 20px;
+}
+
+.menuText {
+  opacity: 0;
+  font-size: 18px;
+  transform: translateX(-50px);
+  transition: opacity 0.5s, transform 0.5s;
+  visibility: hidden;
+}
+
+.content {
+  padding: 36px 16px;
+  width: 100%;
+}

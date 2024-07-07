@@ -1,0 +1,66 @@
+.overviewCard {
+  background-color: var(--dark-grey);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 8px 8px;
+  position: absolute;
+  transition: 0.25s;
+	transition-delay: 0.25s;
+  top: 50%;
+	visibility: hidden;
+  width: 300px;
+	z-index: 2;
+
+  &.visible {
+    opacity: 1;
+		visibility: visible;
+  }
+
+  &.left {
+    left: 0;
+    transform: translate(0, -50%) scale(0);
+
+    &.visible {
+      transform: translate(0, -50%) scale(1);
+    }
+  }
+
+  &.middle {
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+
+    &.visible {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &.right {
+    left: calc(100% - 300px);
+    transform: translate(0, -50%) scale(0);
+
+    &.visible {
+      transform: translate(0, -50%) scale(1);
+    }
+  }
+}
+
+.overviewImage {
+  margin-left: -8px;
+}
+
+.overview {
+  color: var(--grey);
+  display: -webkit-box;
+  font-size: 14px;
+  line-height: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: initial;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}

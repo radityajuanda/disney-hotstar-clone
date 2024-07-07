@@ -1,0 +1,26 @@
+.posterSection {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.posterSectionTitle {
+	color: var(--light-grey);
+	font-size: 20px;
+}
+
+.posters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px 8px;
+
+	& > div {
+		flex: none;
+		width: calc(100% / 7 - 8px);
+	}
+
+	& > div > img {
+		height: auto;
+		width: 100%;
+	}
+}

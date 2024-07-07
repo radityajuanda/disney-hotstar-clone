@@ -1,0 +1,26 @@
+.tvSeriesDetailContent {
+	display: flex;
+	flex-direction: column;
+	gap: 64px;
+}
+
+.seasons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+
+.season {
+	background: none;
+	border: none;
+	color: var(--grey);
+	cursor: pointer;
+	flex: none;
+	font-size: 16px;
+	font-weight: bold;
+	padding: none;
+
+	&.selected {
+		color: var(--white);
+	}
+}
