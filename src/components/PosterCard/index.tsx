@@ -27,7 +27,7 @@ const PosterCard = ({ overviewPosition = 'middle', show }: PosterCardProps) => {
   const linkRef = useRef<HTMLAnchorElement>(null);
 
   const showOverviewCard: MouseEventHandler<HTMLDivElement> = useCallback(
-    () => setShouldShowOverviewCard(false),
+    () => setShouldShowOverviewCard(true),
     []
   );
 
