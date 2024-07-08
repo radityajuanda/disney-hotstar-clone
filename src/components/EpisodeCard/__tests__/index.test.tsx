@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import EpisodeCard from '.';
+import EpisodeCard from '..';
 
 const episode = {
   air_date: '2019-04-06',
@@ -50,8 +50,15 @@ const episode = {
 
 describe('EpisodeCard', () => {
   it('should render correctly', () => {
-    const { getByText } = render(<EpisodeCard episode={episode} />);
+    const { getByText, getByAltText } = render(
+      <EpisodeCard episode={episode} />
+    );
 
-    expect(getByText('Cruelty')).toBeInTheDocument();
+    expect(getByAltText(episode.name)).toBeInTheDocument();
+    expect(getByText(episode.name)).toBeInTheDocument();
+    expect(getByText(episode.overview)).toBeInTheDocument();
+    expect(getByText('6 Apr 2019')).toBeInTheDocument();
+    expect(getByText('S1 E1')).toBeInTheDocument();
+    expect(getByText('23m')).toBeInTheDocument();
   });
 });
