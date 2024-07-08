@@ -1,7 +1,5 @@
 import {
-  DragEvent,
   MouseEvent,
-  TouchEvent,
   useCallback,
   useMemo,
   useRef,

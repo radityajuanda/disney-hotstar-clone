@@ -6,13 +6,13 @@ import {
   useWatchlistState,
 } from "@/contexts/WatchlistContext";
 
-import type { Show } from "@/types/show";
+import type { Show, ShowDetail } from "@/types/show";
 
 import styles from "./styles.module.css";
 
 interface WatchlistButtonProps {
   height?: string;
-  show: Show;
+  show: Show | ShowDetail;
   width?: string;
 }
 

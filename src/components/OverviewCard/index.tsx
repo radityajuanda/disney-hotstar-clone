@@ -47,7 +47,7 @@ const OverviewCard = ({
         <Image
           className={styles.overviewImage}
           src={`${IMAGE_BASE_URL}/w300${show.backdrop_path}`}
-          alt={show.title || show.name}
+          alt={show.title || show.name || ''}
           width={300}
           height={169}
         />

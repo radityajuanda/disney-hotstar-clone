@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import dayjs from 'dayjs';
 
 import { IMAGE_BASE_URL } from '@/constants/url';
 
@@ -25,8 +26,8 @@ const EpisodeCard = ({ episode }: EpisodeCardProps) => {
       <div className={styles.content}>
         <div className={styles.title}>{episode.name}</div>
         <div className={styles.information}>
-          {`S${episode.season_number} E${episode.episode_number}`} |{' '}
-          {episode.air_date} | {convertShowDurationToString(episode.runtime)}
+          <span>{`S${episode.season_number} E${episode.episode_number}`}</span> |{' '}
+          <span>{dayjs(episode.air_date).format('D MMM YYYY')}</span> | <span>{convertShowDurationToString(episode.runtime)}</span>
         </div>
         <div className={styles.overview}>{episode.overview}</div>
       </div>

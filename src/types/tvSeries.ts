@@ -16,15 +16,15 @@ export interface TVSeries {
 	overview: string,
 	popularity: number,
 	poster_path: string,
-	release_date: string,
-	title: never;
+	release_date?: never,
+	title?: never;
 	video: boolean,
 	vote_average: number,
 	vote_count: number
 }
 
-export interface TVSeriesDetail extends TVSeries {
-	created_by: [],
+export interface TVSeriesDetail extends Omit<TVSeries, 'genre_ids' | 'video' | 'media_type'> {
+	created_by: object[],
 	episode_run_time: number[],
 	genres: Genre[],
 	homepage: string,
@@ -56,7 +56,7 @@ export interface TVSeriesDetail extends TVSeries {
 		iso_3166_1: string,
 		name: string,
 	}[],
-	runtime: never;
+	runtime?: never;
 	seasons: Season[],
 	spoken_languages: {
 		english_name: string,

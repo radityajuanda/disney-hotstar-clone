@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
   createContext,
@@ -8,26 +8,27 @@ import {
   useMemo,
   useState,
   type ReactNode,
-} from "react";
+} from 'react';
 
-import type { Show } from "@/types/show";
+import type { Show, ShowDetail } from '@/types/show';
 
 interface WatchlistDispatchContextInterface {
-  addToWatchlist: (show: Show) => void;
-  removeFromWatchlist: (show: Show) => void;
+  addToWatchlist: (show: Show | ShowDetail) => void;
+  removeFromWatchlist: (show: Show | ShowDetail) => void;
 }
 
 interface WatchlistStateContextInterface {
-  watchlist: Show[];
+  watchlist: (Show | ShowDetail)[];
 }
 
-const WatchlistDispatchContext =
+export const WatchlistDispatchContext =
   createContext<WatchlistDispatchContextInterface>(
     {} as WatchlistDispatchContextInterface
   );
-const WatchlistStateContext = createContext<WatchlistStateContextInterface>({
-  watchlist: [],
-});
+export const WatchlistStateContext =
+  createContext<WatchlistStateContextInterface>({
+    watchlist: [],
+  });
 
 export const useWatchlistDispatch = () => {
   return useContext(WatchlistDispatchContext);
@@ -44,24 +45,24 @@ interface WatchlistContextProviderProps {
 const WatchlistContextProvider = ({
   children,
 }: WatchlistContextProviderProps) => {
-  const [watchlist, setWatchlist] = useState<Show[]>([]);
+  const [watchlist, setWatchlist] = useState<(Show | ShowDetail)[]>([]);
 
   const addToWatchlist = useCallback(
-    (show: Show) => {
+    (show: Show | ShowDetail) => {
       const newWatchlist = [...watchlist, show];
       setWatchlist(newWatchlist);
-      window.localStorage.setItem("watchlist", JSON.stringify(watchlist));
+      window.localStorage.setItem('watchlist', JSON.stringify(watchlist));
     },
     [watchlist]
   );
 
   const removeFromWatchlist = useCallback(
-    (show: Show) => {
+    (show: Show | ShowDetail) => {
       const newWatchlist = [...watchlist];
       const removedIndex = newWatchlist.findIndex((s) => s.id === show.id);
       newWatchlist.splice(removedIndex, 1);
       setWatchlist(newWatchlist);
-      window.localStorage.setItem("watchlist", JSON.stringify(watchlist));
+      window.localStorage.setItem('watchlist', JSON.stringify(watchlist));
     },
     [watchlist]
   );
@@ -83,7 +84,7 @@ const WatchlistContextProvider = ({
 
   useEffect(() => {
     // Set data from localstorage to state
-    const lsWatchlist = window.localStorage.getItem("watchlist");
+    const lsWatchlist = window.localStorage.getItem('watchlist');
     if (lsWatchlist) {
       setWatchlist(JSON.parse(lsWatchlist));
     }

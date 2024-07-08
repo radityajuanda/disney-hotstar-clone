@@ -37,23 +37,27 @@ const ShowDetailHero = ({ showDetail }: ShowDetailHeroProps) => {
           src={`${IMAGE_BASE_URL}/original${showDetail.backdrop_path}`}
           width={3840}
           height={2160}
-          alt={showDetail.title || showDetail.name}
+          alt={showDetail.title || showDetail.name || ''}
         />
       </div>
       <div className={styles.content}>
         <h2 className={styles.title}>{showDetail.title || showDetail.name}</h2>
         <div className={styles.information}>
-          {showDetail.release_date?.slice(0, 4) ||
-            showDetail.first_air_date?.slice(0, 4)}{' '}
-          | {showDuration} |{' '}
-          {showDetail.spoken_languages.length > 1
-            ? `${showDetail.spoken_languages.length} Languages`
-            : showDetail.spoken_languages[0].english_name}
+          <span>
+            {showDetail.release_date?.slice(0, 4) ||
+              showDetail.first_air_date?.slice(0, 4)}
+          </span>{' '}
+          | <span>{showDuration}</span> |{' '}
+          <span>
+            {showDetail.spoken_languages.length > 1
+              ? `${showDetail.spoken_languages.length} Languages`
+              : showDetail.spoken_languages[0].english_name}
+          </span>
         </div>
         <div className={styles.overview}>{showDetail.overview}</div>
         <div className={styles.genre}>
           {showDetail.genres.map(
-            (genre, index) => `${index > 0 ? ' | ' : ''}${genre.name}`
+            (genre, index) => <>{index > 0 ? ' | ' : ''}<span>{genre.name}</span></>
           )}
         </div>
         <WatchlistButton show={showDetail} />

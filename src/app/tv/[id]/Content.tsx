@@ -36,9 +36,6 @@ const TVSeriesDetailContent = ({ id }: TVSeriesDetailContentProps) => {
     queryFn: () => getTVSeriesSeasonDetail(Number(id), selectedSeason),
   });
 
-  console.log(tvSeriesDetail);
-  console.log(seasonDetail);
-
   if (!tvSeriesDetail) return null;
   return (
     <div className={styles.tvSeriesDetailContent}>

@@ -20,11 +20,10 @@ export interface Movie {
 	vote_count: number,
 }
 
-export interface MovieDetail extends Movie {
+export interface MovieDetail extends Omit<Movie, 'genre_ids' | 'video' | 'media_type'> {
 	belongs_to_collection: number[],
 	budget: number,
 	first_air_date: never;
-	genre_ids: never;
 	genres: Genre[];
 	imdb_id: string,
 	production_companies: Affiliate[],

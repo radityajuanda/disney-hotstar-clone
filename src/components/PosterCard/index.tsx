@@ -66,7 +66,7 @@ const PosterCard = ({ overviewPosition = 'middle', show }: PosterCardProps) => {
         ref={linkRef}
       >
         <Image
-          alt={show.title || show.name}
+          alt={show.title || show.name || ''}
           className={styles.posterCard}
           height={513}
           onMouseEnter={showOverviewCard}
