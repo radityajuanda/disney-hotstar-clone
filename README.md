@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). This project is only for personal purpose and not intended to be use in any other way.
 
-## Getting Started
+## How to run the project
 
-First, run the development server:
+- Clone the repository
+- Install the dependencies: `npm install`
+- Run the development server: `npm run dev`
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stacks
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Typescript
+- React + Next.js
+- Jest + React Testing Library
+- @tanstack/react-query (API request utility)
+- clsx (classname utility)
+- dayjs (date utility)
+- use-debounce (debounce and throttle utility)
+- @ant-design/icons (icons)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Typescript
+Typescript simply ease development process. While we need to create types manually and correctly, it provides autocomplete and early error detection vanilla Javascript cannot.
 
-## Learn More
+### React Context
+This project only use React Context as the state management. Since the only state we need to share is watchlist, React Context is more than enough to share the state and prevent drilling props deeply. It also reduce complexity and prevent unnecessary increase of bundle size.
 
-To learn more about Next.js, take a look at the following resources:
+### React Query
+React Query is used in this project to ease fetching concerns mainly caching and isomorphic fetching for SSR. While it's loading and error handling capabilities are not used in this project, it will be used regularly in normal project.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Vercel Link
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Deployed on Vercel](https://disney-hotstar-clone-rho.vercel.app/)
