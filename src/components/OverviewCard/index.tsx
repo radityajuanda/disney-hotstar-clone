@@ -5,21 +5,23 @@ import clsx from 'clsx';
 
 import { IMAGE_BASE_URL } from '@/constants/url';
 
-import type { Show } from '@/types/show';
+import type { Show, ShowDetail } from '@/types/show';
 
 import WatchlistButton from '@/components/WatchlistButton';
 
 import styles from './styles.module.css';
 
 interface OverviewCardProps {
+  mediaType?: 'movie' | 'tv';
   onMouseEnter: MouseEventHandler<HTMLDivElement>;
   onMouseLeave: MouseEventHandler<HTMLDivElement>;
   overviewPosition?: 'left' | 'middle' | 'right';
-  show: Show;
+  show: Show | ShowDetail;
   visible: boolean;
 }
 
 const OverviewCard = ({
+  mediaType,
   onMouseEnter,
   onMouseLeave,
   overviewPosition = 'middle',
@@ -29,7 +31,7 @@ const OverviewCard = ({
   return (
     <Link
       className={styles.posterCardWrapper}
-      href={`/${show.media_type}/${show.id}`}
+      href={`/${mediaType}/${show.id}`}
     >
       <div
         className={

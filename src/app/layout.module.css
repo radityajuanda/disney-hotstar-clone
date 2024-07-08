@@ -1,6 +1,11 @@
 .sidenav {
   align-items: center;
-	background: linear-gradient(to right, var(--bg-black), rgba(0, 0, 0, 0.8) 96px, rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    to right,
+    var(--bg-black),
+    rgba(0, 0, 0, 0.8) 96px,
+    rgba(0, 0, 0, 0)
+  );
   display: flex;
   height: 100%;
   left: 0;
@@ -14,21 +19,16 @@
     z-index: 10;
   }
 
-  & > ul {
-    width: 100%;
-
-    &:hover .menuText {
-      opacity: 1;
-      transform: translateX(0);
-      visibility: visible;
-    }
+  & > ul:hover .menuText {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
   }
 }
 
 .menu {
   color: var(--grey);
   cursor: pointer;
-  width: 100%;
 
   &:hover {
     color: var(--white);

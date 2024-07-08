@@ -4,6 +4,7 @@ import type { Affiliate } from '@/types/affiliate';
 export interface Movie {
 	adult: boolean,
 	backdrop_path: string,
+	first_air_date?: never,
 	id: number,
 	genre_ids: number[],
 	media_type: string,

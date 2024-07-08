@@ -2,12 +2,12 @@ import { useCallback } from "react";
 
 import PosterCard from "@/components/PosterCard";
 
-import type { Show } from "@/types/show";
+import type { Show, ShowDetail } from "@/types/show";
 
 import styles from "./styles.module.css";
 
 interface PosterSectionProps {
-  shows: Show[];
+  shows: (Show | ShowDetail)[];
   title: string;
 }
 

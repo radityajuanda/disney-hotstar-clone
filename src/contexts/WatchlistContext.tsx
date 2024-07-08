@@ -25,6 +25,7 @@ export const WatchlistDispatchContext =
   createContext<WatchlistDispatchContextInterface>(
     {} as WatchlistDispatchContextInterface
   );
+
 export const WatchlistStateContext =
   createContext<WatchlistStateContextInterface>({
     watchlist: [],
@@ -51,7 +52,7 @@ const WatchlistContextProvider = ({
     (show: Show | ShowDetail) => {
       const newWatchlist = [...watchlist, show];
       setWatchlist(newWatchlist);
-      window.localStorage.setItem('watchlist', JSON.stringify(watchlist));
+      window.localStorage.setItem('watchlist', JSON.stringify(newWatchlist));
     },
     [watchlist]
   );
@@ -62,7 +63,7 @@ const WatchlistContextProvider = ({
       const removedIndex = newWatchlist.findIndex((s) => s.id === show.id);
       newWatchlist.splice(removedIndex, 1);
       setWatchlist(newWatchlist);
-      window.localStorage.setItem('watchlist', JSON.stringify(watchlist));
+      window.localStorage.setItem('watchlist', JSON.stringify(newWatchlist));
     },
     [watchlist]
   );

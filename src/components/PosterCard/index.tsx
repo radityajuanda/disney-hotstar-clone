@@ -2,6 +2,7 @@ import {
   MouseEvent,
   type MouseEventHandler,
   useCallback,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -10,7 +11,7 @@ import Link from 'next/link';
 
 import { IMAGE_BASE_URL } from '@/constants/url';
 
-import type { Show } from '@/types/show';
+import type { Show, ShowDetail } from '@/types/show';
 
 import OverviewCard from '@/components/OverviewCard';
 
@@ -18,13 +19,18 @@ import styles from './styles.module.css';
 
 interface PosterCardProps {
   overviewPosition?: 'left' | 'middle' | 'right';
-  show: Show;
+  show: Show | ShowDetail;
 }
 
 const PosterCard = ({ overviewPosition = 'middle', show }: PosterCardProps) => {
   const [shouldShowOverviewCard, setShouldShowOverviewCard] = useState(false);
   const isDraggedRef = useRef(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
+
+  const mediaType = useMemo(() => {
+    if (show.release_date) return 'movie';
+    if (show.first_air_date) return 'tv';
+  }, [show])
 
   const showOverviewCard: MouseEventHandler<HTMLDivElement> = useCallback(
     () => setShouldShowOverviewCard(true),
@@ -60,7 +66,7 @@ const PosterCard = ({ overviewPosition = 'middle', show }: PosterCardProps) => {
   return (
     <div className={styles.posterCardWrapper} onMouseUp={handleMouseUp}>
       <Link
-        href={`/${show.media_type}/${show.id}`}
+        href={`/${mediaType}/${show.id}`}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         ref={linkRef}
@@ -76,6 +82,7 @@ const PosterCard = ({ overviewPosition = 'middle', show }: PosterCardProps) => {
         />
       </Link>
       <OverviewCard
+        mediaType={mediaType}
         onMouseEnter={showOverviewCard}
         onMouseLeave={hideOverviewCard}
         overviewPosition={overviewPosition}
